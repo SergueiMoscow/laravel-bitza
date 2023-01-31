@@ -1,7 +1,7 @@
 const body = document.querySelector("body"),
     nav = document.querySelector("nav"),
     modeToggle = document.querySelector(".dark-light"),
-    saiunkluca = document.querySelector(".saiunkluca"),
+    searchButton = document.querySelector(".search-button"),
     sidebarOpen = document.querySelector(".sidebarOpen"),
     siderbarClose = document.querySelector(".siderbarClose");
 
@@ -24,8 +24,8 @@ modeToggle.addEventListener("click", () => {
 });
 
 // js код для переключения окна поиска
-saiunkluca.addEventListener("click", () => {
-    saiunkluca.classList.toggle("cedsamun");
+searchButton.addEventListener("click", () => {
+    searchButton.classList.toggle("cedsamun");
 });
 
 

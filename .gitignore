@@ -21,3 +21,7 @@ yarn-error.log
 /master
 /temp
 .gitignore
+sbitza.ini
+inventory.ini
+Makefile
+s_readme.txt

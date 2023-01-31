@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); */
 
 *{
   margin: 0;
@@ -50,7 +50,6 @@ body.dark nav{
 nav .nav-bar{
   position: relative;
   height: 100%;
-  max-width: 1000px;
   width: 100%;
   background-color: var(--nav-color);
   margin: 0 auto;
@@ -68,14 +67,14 @@ nav .nav-bar .sidebarOpen{
   display: none;
 }
 
-nav .nav-bar .sagkiun a{
+nav .nav-bar .logo a{
   font-size: 25px;
   font-weight: 500;
   color: var(--text-color);
   text-decoration: none;
 }
 
-.menu .kuledsamin{
+.menu .menu-header{
   display: none;
 }
 
@@ -116,13 +115,13 @@ nav .nav-bar .sagkiun a{
   opacity: 1;
 }
 
-.nav-bar .poiskovay{
+.nav-bar .nav-buttons{
   display: flex;
   align-items: center;
 }
 
-.poiskovay .dark-light,
-.poiskovay .saiunkluca{
+.nav-buttons .dark-light,
+.nav-buttons .search-button{
   height: 40px;
   width: 40px;
   display: flex;
@@ -132,7 +131,7 @@ nav .nav-bar .sagkiun a{
 }
 
 .dark-light i,
-.saiunkluca i{
+.search-button i{
   position: absolute;
   color: var(--text-color);
   font-size: 22px;
@@ -155,26 +154,26 @@ nav .nav-bar .sagkiun a{
   pointer-events: none;
 }
 
-.saiunkluca i.cancel{
+.search-button i.cancel{
   opacity: 0;
   pointer-events: none;
 }
 
-.saiunkluca.cedsamun i.cancel{
+.search-button.cedsamun i.cancel{
   opacity: 1;
   pointer-events: auto;
 }
 
-.saiunkluca.cedsamun i.search{
+.search-button.cedsamun i.search{
   opacity: 0;
   pointer-events: none;
 }
 
-.poiskova-stroka{
+.search-block{
   position: relative;
 }
 
-.poiskova-stroka .puesko-dsamva{
+.search-block .search-string{
   position: absolute;
   bottom: -85px;
   right: 5px;
@@ -191,13 +190,13 @@ nav .nav-bar .sagkiun a{
   transition: all 0.3s ease;
 }
 
-.saiunkluca.cedsamun ~ .puesko-dsamva{
+.search-button.cedsamun ~ .search-string{
   bottom: -74px;
   opacity: 1;
   pointer-events: auto;
 }
 
-.puesko-dsamva::before{
+.search-string::before{
   content: '';
   position: absolute;
   right: 14px;
@@ -209,7 +208,7 @@ nav .nav-bar .sagkiun a{
   z-index: -1;
 }
 
-.puesko-dsamva input{
+.search-string input{
   height: 100%;
   width: 100%;
   padding: 0 45px 0 15px;
@@ -222,11 +221,11 @@ nav .nav-bar .sagkiun a{
   background-color: var(--search-bar);
 }
 
-body.dark .puesko-dsamva input{
+body.dark .search-string input{
   color: var(--text-color);
 }
 
-.puesko-dsamva i{
+.search-string i{
   position: absolute;
   color: var(--nav-color);
   right: 15px;
@@ -234,7 +233,7 @@ body.dark .puesko-dsamva input{
   cursor: pointer;
 }
 
-body.dark .puesko-dsamva i{
+body.dark .search-string i{
   color: var(--text-color);
 }
 
@@ -259,12 +258,12 @@ body.dark .puesko-dsamva i{
   left: -0%;
   }
 
-  nav.cedsamun .nav-bar .navsagkiun a{
+  nav.cedsamun .nav-bar .navlogo a{
   opacity: 0;
   transition: all 0.3s ease;
   }
 
-  .menu .kuledsamin{
+  .menu .menu-header{
   display: block;
   width: 100%;
   display: flex;
@@ -272,7 +271,7 @@ body.dark .puesko-dsamva i{
   justify-content: space-between;
   }
 
-  .kuledsamin .siderbarClose{
+  .menu-header .siderbarClose{
   color: var(--text-color);
   font-size: 24px;
   cursor: pointer;
