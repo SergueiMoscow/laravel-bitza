@@ -1,0 +1,10 @@
+.col-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 5px;
+    padding: 5px;
+}
+
+.cell1 {
+    grid-column: span 1;
+}
