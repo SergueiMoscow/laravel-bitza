@@ -1,3 +1,6 @@
+body {
+    color: #333;
+}
 .col-6 {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -5,6 +8,29 @@
     padding: 5px;
 }
 
+.col-7 {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 5px;
+    padding: 5px;
+}
+
+.col-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 5px;
+    padding: 5px;
+}
+
+.search {
+    padding: 5px 1.5rem;
+}
+
 .cell1 {
     grid-column: span 1;
+}
+
+.surname {
+    font-size: large;
+    font-weight: bold;
 }

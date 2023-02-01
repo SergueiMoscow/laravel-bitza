@@ -33,15 +33,15 @@ return new class extends Migration {
         CREATE VIEW expectedPayments AS
         SELECT 
             contracts.number, 
-            contracts.date_begin, 
+            DATE_FORMAT(contracts.date_begin, '%d.%m.%Y') as date_begin,
             contracts.room, 
             contracts.price, 
             sum(payments.total) as payed, 
             DATEDIFF(now(),contracts.date_begin) as diff, 
-            DATEDIFF(now(),contracts.date_begin)/(365/12) as monthdiff, 
-            COALESCE(sum(payments.total)/contracts.price,0) as paidmonths, 
-            DATEDIFF(now(),contracts.date_begin)/(365/12)-COALESCE(sum(payments.total)/contracts.price,0) as debtmonth, 
-            ((DATEDIFF(now(),contracts.date_begin)/(365/12))-COALESCE(sum(payments.total)/contracts.price,0))*contracts.price as debtrur 
+            ROUND(DATEDIFF(now(),contracts.date_begin)/(365/12), 1) as monthdiff, 
+            ROUND(COALESCE(sum(payments.total)/contracts.price,0), 1) as paidmonths, 
+            ROUND(DATEDIFF(now(),contracts.date_begin)/(365/12)-COALESCE(sum(payments.total)/contracts.price,0), 1) as debtmonth, 
+            ROUND(((DATEDIFF(now(),contracts.date_begin)/(365/12))-COALESCE(sum(payments.total)/contracts.price,0))*contracts.price, 0) as debtrur 
         from contracts as contracts
         left join payments as payments on contracts.number=payments.contract
         where contracts.status='A'

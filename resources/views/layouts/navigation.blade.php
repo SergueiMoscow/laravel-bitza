@@ -15,8 +15,8 @@
                     <x-nav-link :href="route('expectedpayments')" :active="request()->routeIs('expectedpayments')">
                         {{ __('Expected payments') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('contacts')" :active="request()->routeIs('contacts')">
+                        {{ __('Clients') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -70,8 +70,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('expectedpayments')" :active="request()->routeIs('expectedpayments')">
+                {{ __('Expected payments') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('contacts')" :active="request()->routeIs('contacts')">
+                {{ __('Clients') }}
             </x-responsive-nav-link>
         </div>
 

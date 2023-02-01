@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExpectedPaymentsController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
@@ -26,6 +27,12 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/expectedpayments', [ExpectedPaymentsController::class, 'expectedPayments'])->name('expectedpayments');
+    Route::get('/contacts/search', [ContactController::class, 'search']);
+    Route::post('/contacts/search', [ContactController::class, 'search']);
+
+    Route::resource('contacts', ContactController::class, ['names' => ['index'=>'contacts']]);
+    Route::resource('contracts', ContractController::class);
+
 });
 
 Route::middleware('auth')->group(function () {
