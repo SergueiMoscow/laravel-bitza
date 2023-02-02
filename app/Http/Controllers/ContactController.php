@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,7 @@ class ContactController extends Controller
         $result = DB::table('contacts')->
         select(self::$columns)->
         orderBy('id', 'desc')->paginate(10);
-        return view('bitza.contacts.index', ['result' => $result]);
+        return view('bitza.contacts.index', ['result' => $result, 'action' => 'create']);
     }
 
     /**
@@ -38,7 +39,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        echo "ContactController_create";
+        return view('bitza.contacts.form', ['action' => 'create']);
     }
 
     /**
@@ -47,9 +48,14 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreContactRequest $request)
     {
-        echo "ContactController_store";
+        $validated = $request->safe();
+        $contact = new Contact();
+        $contact->surname = $validated->surname;
+        $contact->name = $validated->name;
+        $contact->save();
+        return redirect()->route('contacts.index');
     }
 
     /**
@@ -60,7 +66,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        echo "ContactController_show";
+        return view('bitza.contacts.show', ['contact' => $contact]);
     }
 
     /**

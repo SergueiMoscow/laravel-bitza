@@ -28,9 +28,10 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/expectedpayments', [ExpectedPaymentsController::class, 'expectedPayments'])->name('expectedpayments');
     Route::get('/contacts/search', [ContactController::class, 'search']);
-    Route::post('/contacts/search', [ContactController::class, 'search']);
+    //Route::post('/contacts/search', [ContactController::class, 'search']);
 
-    Route::resource('contacts', ContactController::class, ['names' => ['index'=>'contacts']]);
+   // Route::resource('contacts', ContactController::class, ['names' => ['index'=>'contacts']]);
+    Route::resource('contacts', ContactController::class);
     Route::resource('contracts', ContractController::class);
 
 });
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::put('/profile', [ProfileController::class, 'setLanguage'])->name('profile.language');
 });
 
 require __DIR__.'/auth.php';

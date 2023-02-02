@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    document.querySelector(".click-show-contact").addEventListener('click', function(event) {
+        console.log(event.target);
+//        console.log(event.target.getAttribute('data-contact-id'));
+    });
+
     const modal = document.querySelector('#myModal');
 
     // назначаем обработчик события для клика по кнопке открытия окна

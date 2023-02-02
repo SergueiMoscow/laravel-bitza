@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('expectedpayments')" :active="request()->routeIs('expectedpayments')">
                         {{ __('Expected payments') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('contacts')" :active="request()->routeIs('contacts')">
+                    <x-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')">
                         {{ __('Clients') }}
                     </x-nav-link>
                 </div>
@@ -73,7 +73,7 @@
             <x-responsive-nav-link :href="route('expectedpayments')" :active="request()->routeIs('expectedpayments')">
                 {{ __('Expected payments') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('contacts')" :active="request()->routeIs('contacts')">
+            <x-responsive-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')">
                 {{ __('Clients') }}
             </x-responsive-nav-link>
         </div>
