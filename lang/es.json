@@ -8,6 +8,21 @@
     "Log in": "Entrar",
     "Expected payments": "Pagos esperados",
     "Clients": "Clientes",
-    "Profile": "Perfil"
+    "Profile": "Perfil",
+    "surname": "Apellido",
+    "name": "Nombre",
+    "birth_date": "Fecha de nacimiento",
+    "birth_place": "Lugar de nacimiento",
+    "document": "Tipo de documento",
+    "doc_series": "Serie",
+    "doc_number": "Folio",
+    "doc_date": "Fecha de emisión",
+    "doc_issued": "Emitido por",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "notes": "Notas"
+
 
 }

@@ -25,7 +25,21 @@ class StoreContactRequest extends FormRequest
     {
         return [
             'surname' => 'required|min:2|max:30',
-            'name' => 'required|min: 5|max:40'
+            'name' => 'required|min:5|max:40',
+            'birth_date' => 'nullable|date',
+            'birth_place' => 'nullable',
+            'document' => 'nullable',
+            'doc_series' => 'nullable|max:4',
+            'doc_number' => 'nullable',
+            'doc_date' => 'nullable|date',
+            'doc_issued1' => 'nullable',
+            'address1' => 'nullable',
+            'address2' => 'nullable',
+            'city' => 'nullable',
+            'email' => 'nullable',
+            'phone' => 'nullable',
+            'notes' => 'nullable',
+
         ];
     }
 }

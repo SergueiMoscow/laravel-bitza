@@ -1,4 +1,4 @@
-<form method="POST" action=""@if ($action == 'create'){{ route('contacts.store') }}@else{{ route('contacts.update', ['contact' => $contact]) }}@endif"">
+<form method="POST" action="@if ($action == 'create'){{ route('contacts.store') }}@else{{ route('contacts.update', ['contact' => $contact]) }}@endif">
     @csrf
     @if ($action == 'edit') @method('PUT') @endif
     <label for="surname">{{ __('surname') }}</label>

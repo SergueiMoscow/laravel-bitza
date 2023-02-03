@@ -8,5 +8,19 @@
     "Log in": "Log in",
     "Expected payments": "Expected payments",
     "Clients": "Clients",
-    "Profile": "Profile"
+    "Profile": "Profile",
+    "surname": "Surname",
+    "name": "First name",
+    "birth_date": "Birth date",
+    "birth_place": "Birth place",
+    "document": "Document type",
+    "doc_series": "Document series",
+    "doc_number": "Number",
+    "doc_date": "Date of issue",
+    "doc_issued": "Document issued",
+    "address": "Address",
+    "city": "City",
+    "email": "E-mail",
+    "phone": "Phone",
+    "notes": "Notes"
 }

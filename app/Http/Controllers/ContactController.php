@@ -54,6 +54,18 @@ class ContactController extends Controller
         $contact = new Contact();
         $contact->surname = $validated->surname;
         $contact->name = $validated->name;
+        $contact->birth_date = $validated->birth_date;
+        $contact->birth_place = $validated->birth_place;
+        $contact->document = $validated->birth_place;
+        $contact->doc_series = $validated->doc_series;
+        $contact->doc_number = $validated->doc_number;
+        $contact->doc_date = $validated->doc_date;
+        $contact->doc_issued1 = $validated->doc_issued1;
+        $contact->address1 = $validated->address1;
+        $contact->address2 = $validated->address2;
+        $contact->city = $validated->city;
+        $contact->email = $validated->email;
+        $contact->phone = $validated->phone;
         $contact->save();
         return redirect()->route('contacts.index');
     }
@@ -77,7 +89,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        echo "ContactController_edit";
+        return view('bitza.contacts.edit', ['contact' => $contact]);
     }
 
     /**
@@ -87,9 +99,27 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(StoreContactRequest $request, Contact $contact)
     {
-        echo "ContactController_update";
+        $validated = $request->safe();
+        $contact->surname = $validated->surname;
+        $contact->name = $validated->name;
+        $contact->birth_date = $validated->birth_date;
+        $contact->birth_place = $validated->birth_place;
+        $contact->document = $validated->document;
+        $contact->doc_series = $validated->doc_series;
+        $contact->doc_number = $validated->doc_number;
+        $contact->doc_date = $validated->doc_date;
+        $contact->doc_issued1 = $validated->doc_issued1;
+        $contact->address1 = $validated->address1;
+        $contact->address2 = $validated->address2;
+        $contact->city = $validated->city;
+        $contact->email = $validated->email;
+        $contact->phone = $validated->phone;
+        $contact->notes = $validated->notes;
+
+        $contact->save();
+        return redirect()->route('contacts.index');
     }
 
     /**
