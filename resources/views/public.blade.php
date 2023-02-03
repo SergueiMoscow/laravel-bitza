@@ -8,5 +8,5 @@
 @endsection
 
 @section('content')
-    Main content
+   <div>Lang: {{ $lang ?? 'default'}}</div>
 @endsection

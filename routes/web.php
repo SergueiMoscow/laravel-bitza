@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('public');
+    return view('public', ['lang' => App::getLocale()]);
 });
 
 Route::get('/dashboard', function () {
