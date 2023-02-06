@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use App;
 use Auth;
 use Closure;
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class Locale
 {
@@ -25,7 +25,7 @@ class Locale
 
     private function getLocaleFromServer()
     {
-        $languages = explode(';', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        $languages = explode(';', request()->server('HTTP_ACCEPT_LANGUAGE'));
         $locale = substr($languages[0], -2);
         return (in_array($locale, ['en', 'es', 'ru'])) ? $locale : 'en';
     }

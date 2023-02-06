@@ -33,9 +33,9 @@ class ApiAuthTest extends TestCase
         // Log::channel('debug')->debug("ApiAuthTest Token:\n".print_r($api_token, true));
         $response->assertStatus(200);
 
-        $response = $this->get('/api/?token='.$api_token->token);
+        $response = $this->get('/api/?token='.$api_token);
         $content = $response->getContent();
-        // Log::channel('debug')->debug("TestApiAuthTest content:\p" . print_r($content, true));
+        //Log::channel('debug')->debug("TestApiAuthTest content:\p" . print_r($content, true));
         $response->assertStatus(200);
     }
     
@@ -46,7 +46,7 @@ class ApiAuthTest extends TestCase
         //$this->expectExceptionMessageMatches('Login attempt with false token');
         $response = $this->get('/api?token=wrong_token');
         $content = $response->getContent();
-        Log::channel('debug')->debug("TestApiAuthTest content:\p" . print_r($content, true));
+        //Log::channel('debug')->debug("TestApiAuthTest content:\p" . print_r($content, true));
         $this->assertStringContainsString('Login attempt with false token', $content);
     }
 }

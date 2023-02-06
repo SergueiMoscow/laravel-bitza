@@ -31,8 +31,21 @@ class ApiAuth extends Middleware
             Log::channel('catched')->warning(date("Y-m-d H:i:s") . " - User not found for token $api_token from ip: " . $request->getClientIp());
             OutputController::setError(['999' => 'User not found for token passed']);
 // Пока так
-            return $next($request);
-            //throw new \ErrorException('User not found for token passed(1)', 99);
+            //return $next($request);
+            throw new \ErrorException('User not found for token passed(1)', 99);
+        }
+    }
+
+    private function getTokenFromRequest(Request $request): string
+    {
+        $token = $request->token;
+        if (empty($token) && $request->hasHeader('x-api-key')) {
+            $token = $request->header('x-api-key');
+        }
+        if ($token) {
+            return $token;
+        } else {
+            return '';
         }
     }
 
@@ -73,19 +86,6 @@ class ApiAuth extends Middleware
         $token->last_used_at = now();
         $token->save();
         return true;
-    }
-
-    private function getTokenFromRequest(Request $request): string
-    {
-        $token = $request->token;
-        if (empty($token) && $request->hasHeader('x-api-key')) {
-            $token = $request->header('x-api-key');
-        }
-        if ($token) {
-            return $token;
-        } else {
-            return '';
-        }
     }
 
     public function checkUserDevice($request, $guards)
