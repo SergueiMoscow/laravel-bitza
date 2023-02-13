@@ -22,5 +22,7 @@
     "city": "City",
     "email": "E-mail",
     "phone": "Phone",
-    "notes": "Notes"
+    "notes": "Notes",
+    "Payments": "Payments",
+    "Contracts": "Contracts"
 }

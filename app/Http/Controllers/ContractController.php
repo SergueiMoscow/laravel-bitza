@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contract;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContractController extends Controller
 {
@@ -12,9 +13,26 @@ class ContractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private static $columns = [
+        'room',
+        'contact_id',
+        'date_begin',
+        "price",
+        'paydate',
+        'contracts.status',
+        'contacts.surname',
+        'contacts.name',
+        'contracts.id'
+    ];
+
     public function index()
     {
-        //
+        $result = DB::table('contracts')->
+        join('contacts', 'contacts.id', '=', 'contracts.contact_id')->
+        select(self::$columns)->
+        where('contracts.status', 'A')->
+        orderBy('id', 'desc')->paginate(10);
+        return view('bitza.contracts.index', ['result' => $result, 'action' => 'create']);
     }
 
     /**
@@ -82,4 +100,20 @@ class ContractController extends Controller
     {
         //
     }
+    public function search(Request $request)
+    {
+        $searchString = $request->q;
+        $result = DB::table('contracts')->
+            join('contacts', 'contacts.id', '=', 'contracts.contact_id')->
+            select(self::$columns)->
+            where('contracts.status', '=', 'A')->
+            where(function($query) use ($searchString) {
+                $query->where('surname', 'like', "%$searchString%")->
+                orWhere('name', 'like', "%$searchString%")-> 
+                orWhere('room', 'like', "%$searchString%");
+            })->
+            orderBy('id', 'desc')->paginate();
+        return view('bitza.contracts.list', ['result' => $result]);
+    }
+
 }

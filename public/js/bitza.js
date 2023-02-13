@@ -18,17 +18,35 @@ function post(url, data = {}) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    var input = document.getElementById("search_contact")
-    input.oninput = function (event) {
-        //data = post('/contacts/search', {'q': input.value});
-        console.log(event.srcElement.value);
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", '/contacts/search?q=' + event.srcElement.value, true);
-        xhr.responseType = 'text';
-        xhr.send();
-        xhr.onload = function () {
-            divListContact = document.getElementById("list_contact");
-            divListContact.innerHTML = xhr.response;
+    let input = document.getElementById("search_contact")
+    if (input) {
+        input.oninput = function (event) {
+            //data = post('/contacts/search', {'q': input.value});
+            console.log(event.srcElement.value);
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", '/contacts/search?q=' + event.srcElement.value, true);
+            xhr.responseType = 'text';
+            xhr.send();
+            xhr.onload = function () {
+                divListContact = document.getElementById("list_contact");
+                divListContact.innerHTML = xhr.response;
+            }
+        }
+    }
+
+    input = document.getElementById("search_contract")
+    if (input) {
+        input.oninput = function (event) {
+            //data = post('/contracts/search', {'q': input.value});
+            console.log(event.srcElement.value);
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", '/contracts/search?q=' + event.srcElement.value, true);
+            xhr.responseType = 'text';
+            xhr.send();
+            xhr.onload = function () {
+                divListContract = document.getElementById("list_contract");
+                divListContract.innerHTML = xhr.response;
+            }
         }
     }
 

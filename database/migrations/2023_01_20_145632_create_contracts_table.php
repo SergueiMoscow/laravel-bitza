@@ -19,7 +19,7 @@ return new class extends Migration
             $table->dateTime('date_end')->nullable();
             $table->unsignedInteger('document_id')->default(0);
             $table->string('number', 20);
-            $table->unsignedInteger('building_id');
+            $table->unsignedInteger('building_id')->defult(0);
             $table->string('room', 5)->nullable();
             $table->smallInteger('paydate')->nullable();
             $table->integer('price')->nullable();

@@ -22,7 +22,9 @@
     "city": "Город",
     "email": "E-mail",
     "phone": "Телефон",
-    "notes": "Заметки"
+    "notes": "Заметки",
+    "Payments": "Платежи",
+    "Contracts": "Договора"
 
 
 

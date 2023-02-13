@@ -22,7 +22,9 @@
     "city": "Ciudad",
     "email": "Correo electrónico",
     "phone": "Teléfono",
-    "notes": "Notas"
+    "notes": "Notas",
+    "Payments": "Pagos",
+    "Contracts": "Contratos"
 
 
 }
