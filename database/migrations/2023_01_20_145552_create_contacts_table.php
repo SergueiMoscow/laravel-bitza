@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('doc_series', 4)->nullable();
             $table->string('doc_number', 10)->nullable();
             $table->date('doc_date')->nullable();
-            $table->string('doc_issued1', 100)->nullable();
+            $table->string('doc_issued1', 255)->nullable();
             $table->string('doc_issued2', 10)->nullable();
             $table->string('address1', 80)->nullable();
             $table->string('address2', 40)->nullable();

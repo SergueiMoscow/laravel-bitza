@@ -12,6 +12,8 @@
     <label for="doc_series">{{ __('document number') }}</label>
     <input name="doc_series" id="doc_series" type="text" class="{{ $classForInputText }}" value="@if ($action == 'create'){{ old('doc_series') }}@else{{ $contact->doc_series}}@endif"/>
     <input name="doc_number" id="doc_number" type="text" class="{{ $classForInputText }}" value="@if ($action == 'create'){{ old('doc_number') }}@else{{ $contact->doc_number}}@endif"/>
+    <label for="doc_date">{{ __('document issued') }}</label>
+    <input name="doc_date" id="doc_date" type="text" class="{{ $classForInputText }}" value="@if ($action == 'create'){{ old('doc_date') }}@else{{ $contact->doc_date }}@endif"/>
     <label for="phone">{{ __('phone') }}</label>
     <input name="phone" id="phone" type="text" class="{{ $classForInputText }}" />
 
