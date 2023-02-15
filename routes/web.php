@@ -30,6 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/expectedpayments', [ExpectedPaymentsController::class, 'expectedPayments'])->name('expectedpayments');
     Route::get('/contacts/search', [ContactController::class, 'search']);
     Route::get('/contracts/search', [ContractController::class, 'search']);
+    Route::get('/contacts/list', [ContactController::class, 'getList']);
 
     Route::resource('contacts', ContactController::class);
     Route::resource('contracts', ContractController::class);

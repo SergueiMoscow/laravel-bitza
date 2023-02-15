@@ -1,4 +1,4 @@
-function post(url, data = {}) {
+const post = (url, data = {}) => {
     // Определяем функцию которая принимает в качестве параметров url и данные которые необходимо обработать:
     const postData = async (url, data) => {
         // Формируем запрос
@@ -17,7 +17,7 @@ function post(url, data = {}) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     let input = document.getElementById("search_contact")
     if (input) {
         input.oninput = function (event) {
@@ -57,22 +57,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const modal = document.querySelector('#myModal');
 
-    // назначаем обработчик события для клика по кнопке открытия окна
-    document.querySelector('#editBtn').addEventListener('click', openModal);
-
     /*
      * Обработчик события клика по кнопке открытия модального окна
      */
-    function openModal() {
+    const openModal = () => {
         modal.classList.add('modal-open');
         // обработчики событий, которые работают, когда окно открыто
         attachModalEvents();
     }
 
+    // назначаем обработчик события для клика по кнопке открытия окна
+    document.querySelector('#editBtn').addEventListener('click', openModal);
+
+
     /*
      * Функция назначает обработчики событий к элементам модального окна при открытии
      */
-    function attachModalEvents() {
+    const attachModalEvents = () => {
         // закрывать модальное окно при нажатии на крестик
         modal.querySelector('.close').addEventListener('click', closeModal);
         // закрывать модальное окно при нажатии клавиши Escape
@@ -84,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /*
      * Обработчик события клика по кнопке закрытия модального окна
      */
-    function closeModal() {
+    const closeModal = () => {
         modal.classList.remove('modal-open');
         // окно закрыто, эти обработчики событий больше не нужны
         detachModalEvents();
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /*
      * Функция удаляет обработчики событий к элементам модального окна при закрытии
      */
-    function detachModalEvents() {
+    const detachModalEvents = () => {
         modal.querySelector('.close').removeEventListener('click', closeModal);
         document.removeEventListener('keydown', handleEscape);
         modal.removeEventListener('click', handleOutside);
@@ -102,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /*
      * Функция закрывает модальное окно при нажатии клавиши Escape
      */
-    function handleEscape(event) {
+    const handleEscape = (event) => {
         if (event.key === 'Escape') {
             closeModal();
         }
@@ -111,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /*
      * Функция закрывает модальное окно при клике вне контента модального окна
      */
-    function handleOutside(event) {
+    const handleOutside = (event) => {
         const isClickInside = !!event.target.closest('.modal-content');
         if (!isClickInside) {
             closeModal();

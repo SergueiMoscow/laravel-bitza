@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContractRequest;
 use App\Models\Contract;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,7 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+        return view('bitza.contracts.form', ['action' => 'create']);
     }
 
     /**
@@ -51,9 +52,19 @@ class ContractController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreContractRequest $request)
     {
-        //
+        $validated = $request->safe();
+        $contract = new Contract();
+        $contract->date_begin = $validated->date_begin;
+        $contract->date_end = $validated->date_end;
+        $contract->room = $validated->room;
+        $contract->price = $validated->price;
+        $contract->paydate = $validated->paydate;
+        //$contract->contact_id = $validated->contact_id;
+        $contract->status = 'A';
+        $contract->save();
+        return redirect()->route('contracts.index');
     }
 
     /**

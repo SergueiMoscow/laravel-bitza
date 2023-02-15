@@ -142,4 +142,15 @@ class ContactController extends Controller
             orderBy('id', 'desc')->paginate();
         return view('bitza.contacts.list', ['result' => $result]);
     }
+
+    public function getList(Request $request)
+    {
+        $searchString = $request->q;
+        $result = DB::table('listContacts')->
+            where('n', 'like', "%$searchString%")->
+            orderBy('n')->get();
+        echo json_encode($result);
+        return ;
+
+    }
 }
