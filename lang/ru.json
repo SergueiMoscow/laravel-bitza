@@ -24,8 +24,11 @@
     "phone": "Телефон",
     "notes": "Заметки",
     "Payments": "Платежи",
-    "Contracts": "Договора"
-
-
-
+    "Contracts": "Договора",
+    "number": "Номер",
+    "room": "Комната",
+    "paydate": "Дата оплаты",
+    "price": "Цена",
+    "contact": "Клиент",
+    "status": "Cтатус"
 }

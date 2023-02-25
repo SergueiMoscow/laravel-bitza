@@ -24,7 +24,12 @@
     "phone": "Teléfono",
     "notes": "Notas",
     "Payments": "Pagos",
-    "Contracts": "Contratos"
-
+    "Contracts": "Contratos",
+    "number": "Número",
+    "room": "Habitación",
+    "paydate": "Fecha del pago",
+    "price": "Precio",
+    "contact": "Cliente",
+    "status": "Estado"
 
 }

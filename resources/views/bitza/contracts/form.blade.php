@@ -15,9 +15,10 @@
     <label for="room">{{ __('room') }}</label>
     {{-- <input name="room" id="room" type="text" class="{{ $classForInputText }}"  value="@if ($action == 'create'){{ old('room') }}@else{{ $contact->room}}@endif"/> --}}
     {{-- {{ Form::select('room', array('3.02' => '3.02', '3.03' => '3.03'), '3.02');  }} --}}
-    <select class="{{ $classForInputText }}">
-        <option>3.01</option>
-        <option>3.02</option>
+    <select name="room" id="room" class="{{ $classForInputText }}">
+    @foreach($rooms as $room)
+        <option>{{ $room->shortname }}</option>
+    @endforeach
     </select>
     <x-input-error :messages="$errors->get('room')" class="mt-2" />
     <label for="price">{{ __('price') }}</label>
@@ -29,8 +30,8 @@
         value="@if ($action == 'create') {{ old('paydate') }}@else{{ $contact->paydate }} @endif" />
     <x-input-error :messages="$errors->get('paydate')" class="mt-2" />
     <label for="contact">{{ __('contact') }}</label>
-    <input name="contact" id="contact" type="text" class="{{ $classForInputText }}" />
-    <input name="contact_id" id="contact_id" type="hidden" />
+    <input name="contact" id="contact" type="text" class="{{ $classForInputText }}" value="@if ($action == 'create') {{ old('contact') }}@else{{ $contact->contact }} @endif"/>
+    <input name="contact_id" id="contact_id" type="hidden" @if ($action == 'create') {{ old('contact_id') }}@else{{ $contact->contact_id }} @endif/>
     <div id="divListContacts"><select id="listContacts"></select></div>
     <x-input-error :messages="$errors->get('contact')" class="mt-2" />
     {{-- {{ Form::label('date_begin', 'Дата') }}

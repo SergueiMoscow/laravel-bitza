@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContractRequest;
 use App\Models\Contract;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,7 +34,8 @@ class ContractController extends Controller
         select(self::$columns)->
         where('contracts.status', 'A')->
         orderBy('id', 'desc')->paginate(10);
-        return view('bitza.contracts.index', ['result' => $result, 'action' => 'create']);
+        $rooms = Room::getFreeRooms();
+        return view('bitza.contracts.index', ['result' => $result, 'action' => 'create', 'rooms' => $rooms]);
     }
 
     /**
@@ -75,7 +77,7 @@ class ContractController extends Controller
      */
     public function show(Contract $contract)
     {
-        //
+        return view('bitza.contracts.show', ['contract' => $contract]);
     }
 
     /**

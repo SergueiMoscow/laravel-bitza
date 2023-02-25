@@ -30,7 +30,7 @@ return new class extends Migration {
     private function createView(): string
     {
         return <<<SQL
-        CREATE VIEW expectedPayments AS
+        CREATE OR REPLACE VIEW expectedPayments AS
         SELECT 
             contracts.number, 
             DATE_FORMAT(contracts.date_begin, '%d.%m.%Y') as date_begin,

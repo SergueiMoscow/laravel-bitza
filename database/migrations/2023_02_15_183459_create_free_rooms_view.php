@@ -19,11 +19,10 @@ return new class extends Migration
     private function createView(): string
     {
         return <<<SQL
-        CREATE OR REPLACE VIEW listContacts AS
-        SELECT 
-            CONCAT(contacts.surname, ' ', contacts.name) as n,
-            id 
-        from contacts;
+        CREATE OR REPLACE VIEW freeRooms AS
+        SELECT rooms.shortname from rooms
+        WHERE rooms.status = 'A'
+        AND rooms.shortname NOT IN (SELECT contracts.room FROM contracts where status = 'A');
         SQL;
     
     }
@@ -31,7 +30,7 @@ return new class extends Migration
     private function dropView()
     {
         return <<<SQL
-            DROP VIEW IF EXISTS `listContacts`;
+            DROP VIEW IF EXISTS `freeRooms`;
         SQL;
     }
 

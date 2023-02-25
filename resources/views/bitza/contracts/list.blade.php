@@ -1,6 +1,6 @@
 @foreach ($result as $row)
     <div class="bg-white col-7 shadow-sm sm:rounded-lg">
-        <div class="cell-1 click-show-contact" data-contact-id="{{ $row->room }}"><a href="/contacts/{{ $row->id }}"><span class="surname">{{ $row->room }}</span></a></div>
+        <div class="cell-1 click-show-contact" data-contact-id="{{ $row->room }}"><a href="/contracts/{{ $row->id }}"><span class="surname">{{ $row->room }}</span></a></div>
         <div class="cell-1">{{ $row->surname.' '.$row->name }}</div>
         <div class="cell-1">{{ date("d.m.Y", strtotime($row->date_begin)) }}</div>
         <div class="cell-1">{{ $row->price }}</div>

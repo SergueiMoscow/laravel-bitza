@@ -33,4 +33,9 @@ class Contract extends Model
     {
         return $this->belongsTo(ContractForm::class);
     }
+
+    function openDate()
+    {
+        return date('d.m.Y', strtotime($this->date_begin));
+    }
 }

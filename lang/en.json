@@ -24,5 +24,11 @@
     "phone": "Phone",
     "notes": "Notes",
     "Payments": "Payments",
-    "Contracts": "Contracts"
+    "Contracts": "Contracts",
+    "number": "Number",
+    "room": "Room",
+    "paydate": "Pay date",
+    "price": "Price",
+    "contact": "Client",
+    "status": "Status"
 }
