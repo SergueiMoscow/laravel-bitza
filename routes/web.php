@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ExpectedPaymentsController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('contacts', ContactController::class);
     Route::resource('contracts', ContractController::class);
+    Route::resource('payments', PaymentsController::class);
 
 });
 

@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('contracts.index')" :active="request()->routeIs('contracts.index')">
                         {{ __('Contracts') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('payments.index')" :active="request()->routeIs('payments.index')">
+                        {{ __('Payments') }}
+                    </x-nav-link>
                     @if(Auth::user()->role == 'Admin')
                         <x-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')">
                             {{ __('Rooms') }}
