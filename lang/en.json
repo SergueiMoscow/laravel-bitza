@@ -30,5 +30,7 @@
     "paydate": "Pay date",
     "price": "Price",
     "contact": "Client",
-    "status": "Status"
+    "status": "Status",
+    "rent": "Rent"
+
 }

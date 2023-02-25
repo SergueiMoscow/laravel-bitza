@@ -32,6 +32,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/contacts/search', [ContactController::class, 'search']);
     Route::get('/contracts/search', [ContractController::class, 'search']);
     Route::get('/contacts/list', [ContactController::class, 'getList']);
+    Route::post('/payments/r2', [PaymentsController::class, 'getRoom2']);
 
     Route::resource('contacts', ContactController::class);
     Route::resource('contracts', ContractController::class);

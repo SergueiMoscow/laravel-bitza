@@ -30,6 +30,7 @@
     "paydate": "Fecha del pago",
     "price": "Precio",
     "contact": "Cliente",
-    "status": "Estado"
+    "status": "Estado",
+    "rent": "Alquiler"
 
 }

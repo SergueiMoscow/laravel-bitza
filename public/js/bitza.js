@@ -17,6 +17,39 @@ const post = (url, data = {}) => {
     }
 }
 
+const ajax = (args = {}) => {
+    const method = args.method || "GET";
+    const responseType = args.responseType || "text";
+    const defaultError = (event) => {
+      alert(`Error: ${event}`);
+    };
+    const xhr = new XMLHttpRequest();
+    let params = "";
+    if (args.data) {
+      for (param in args.data) {
+        params += `${param}=${encodeURIComponent(args.data[param])}&`;
+      }
+    } else {
+      data = "";
+    }
+    xhr.open(method, args.url, true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.responseType = responseType;
+    console.log(`params_enc2: ${params}`);
+    xhr.send(params);
+    xhr.onload = function () {
+      args.success(xhr.response);
+    };
+    if (args.error) {
+      xhr.onerror = function () {
+        args.error(xhr.response);
+      };
+    } else {
+      xhr.onerror = defaultError;
+    }
+  };
+  
+
 document.addEventListener('DOMContentLoaded', () => {
     let input = document.getElementById("search_contact")
     if (input) {
@@ -50,10 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    document.querySelector(".click-show-contact").addEventListener('click', function(event) {
-        console.log(event.target);
-//        console.log(event.target.getAttribute('data-contact-id'));
-    });
+    if (document.querySelector(".click-show-contact")) {
+        document.querySelector(".click-show-contact").addEventListener('click', function(event) {
+            console.log(event.target);
+    //        console.log(event.target.getAttribute('data-contact-id'));
+        });
+    }
 
     const modal = document.querySelector('#myModal');
 
