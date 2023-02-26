@@ -1,4 +1,6 @@
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+{{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+<link rel="stylesheet" href="/build/assets/app-f52d8432.css">
+<script src="/build/assets/app-113fdd3a.js"></script>
 
 <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
     <div>
