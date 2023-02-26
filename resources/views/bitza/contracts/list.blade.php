@@ -6,7 +6,7 @@
         <div class="cell-1">{{ $row->price }}</div>
         <div class="cell-1">{{ $row->paydate }}</div>
         <div class="cell-1">{{ $row->status }}</div>
-        <div class="cell-1">{{ __('Payments') }}</div>
+        <a href="/payments?contract={{ $row->number }}"><div class="cell-1">{{ __('Payments') }}</div></a>
     </div>
 @endforeach
 {{ $result->links('bitza.mypagination') }}

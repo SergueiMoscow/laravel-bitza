@@ -4,8 +4,15 @@
             {{-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg"> --}}
                 {{-- <div class="p-6 text-gray-900"> --}}
                     @foreach($result as $row)
-                    <div class="bg-white col-6 shadow-sm sm:rounded-lg">
-                      <div class="cell-1">{{ $row->room }}</div>
+                    @if ($row->debtmonth > 1)
+                        <?php $bg_class = 'bg-lightcoral' ?>
+                    @elseif ($row->debtmonth > 0)
+                        <?php $bg_class = 'bg-gold' ?>
+                    @else
+                        <?php $bg_class = 'bg-greenyellow' ?>
+                    @endif
+                    <div class="{{ $bg_class }} col-6 shadow-sm sm:rounded-lg">
+                      <a href="/payments?contract={{ $row->number }}"><div class="cell-1">{{ $row->room }}</div></a>
                       <div class="cell-1">{{ substr($row->date_begin, 0, 10) }}</div>
                       <div class="cell-1">{{ $row->price }}</div>
                       <div class="cell-1">{{ $row->paidmonths }}</div>

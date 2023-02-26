@@ -100,3 +100,19 @@ div[data-contact-id] {
 .text-align-right {
     text-align: right;
 }
+
+.bg-fuchsia {
+    background-color: fuchsia;
+}
+
+.bg-lightcoral {
+    background-color: lightcoral;
+}
+
+.bg-gold {
+    background-color: gold;
+}
+
+.bg-greenyellow {
+    background-color: greenyellow;
+}

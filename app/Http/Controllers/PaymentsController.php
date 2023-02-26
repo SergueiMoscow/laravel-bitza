@@ -25,12 +25,29 @@ class PaymentsController extends Controller
         'notes'
     ];
 
-    public function index()
+    public function index(Request $request)
     {
-        $result = DB::table('payments')->
-        select(self::$columns)->
-        orderBy('time', 'desc')->paginate(10);
-        return view('bitza.payments.index', ['result' => $result, 'action' => 'create', 'room1' => $this->getRoom1()]);
+        if ($request->contract) {
+            $number=addslashes($request->contract);
+            $contract = DB::table('contracts')->
+                select('room')->
+                where('number', $number)->
+                get();
+            $room = $contract[0]->room;
+            $result = DB::table('payments')->
+                select(self::$columns)->
+                where('contract', $number)->
+                orderBy('time', 'desc')->
+                paginate(10);
+            return view('bitza.payments.index', ['result' => $result, 'action' => 'create', 'room' => $room, 'room1' => '']);
+        }
+        else {
+            $result = DB::table('payments')->
+            select(self::$columns)->
+            orderBy('time', 'desc')->
+            paginate(10);
+            return view('bitza.payments.index', ['result' => $result, 'action' => 'create', 'room' => '', 'room1' => $this->getRoom1()]);
+        }
     }
 
     private function getRoom1()
@@ -63,8 +80,12 @@ class PaymentsController extends Controller
         $payment->total = $payment->amount - $payment->discount;
         $payment->bank_account = addslashes($request->bank_account);
         $payment->notes = addslashes($request->notes);
-        Log::debug("Room: {$request->room1}, {$request->room2}");
-        $room = $request->room1 . '.' . $request->room2;
+        if ($request->room1) {
+            Log::debug("Room: {$request->room1}, {$request->room2}");
+            $room = $request->room1 . '.' . $request->room2;
+        } elseif ($request->room) {
+            $room = $request->room;
+        }
         $payment->room = $room;
         $payment->contract = $this->getActiveContractByRoom($room);
         $payment->status = 'New';

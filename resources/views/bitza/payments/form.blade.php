@@ -8,14 +8,20 @@
     <input name="date" id="date" type="date" class="{{ $classForInputText }}"
         value="@if ($action == 'create'){{ old('date') ? old('date') : trim(date('Y-m-d')) }}@else{{ $payment->date }} @endif" />
     <x-input-error :messages="$errors->get('date')" class="mt-2" />
-    <label for="room1">{{ __('room') }}</label>
-    <select name="room1" id="room1" class="{{ str_replace('w-full', '', $classForInputText) }}" onchange="fillr2()">
-    <option>{{__('Select')}}</option>
-    @foreach ($room1 as $r1)
-        <option>{{ $r1->r1 }}</option>
-    @endforeach
-    </select>
-    <select name="room2" id="room2" class="{{ str_replace('w-full', '', $classForInputText) }}"></select><br>
+    @if ($room1)
+        <label for="room1">{{ __('room') }}</label>
+        <select name="room1" id="room1" class="{{ str_replace('w-full', '', $classForInputText) }}" onchange="fillr2()">
+        <option>{{__('Select')}}</option>
+        @foreach ($room1 as $r1)
+            <option>{{ $r1->r1 }}</option>
+        @endforeach
+        </select>
+        <select name="room2" id="room2" class="{{ str_replace('w-full', '', $classForInputText) }}"></select><br>
+    @elseif ($room)
+        <label for="room">{{ __('room') }}</label>
+        <input name="room" id="room" type="text" class="{{ $classForInputText }}"
+            value="{{ $room }}" readonly/>
+    @endif
     <label for="amount">{{ __('amount') }}</label>
     <input name="amount" id="amount" type="number" class="{{ $classForInputText }}"
         value="@if ($action == 'create'){{ old('amount') ? old('amount') : '0' }}@else{{ $payment->amount }} @endif"

@@ -24,7 +24,8 @@ class ContractController extends Controller
         'contracts.status',
         'contacts.surname',
         'contacts.name',
-        'contracts.id'
+        'contracts.id',
+        'contracts.number'
     ];
 
     public function index()
