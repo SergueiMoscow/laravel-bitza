@@ -8,6 +8,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\RegisteredUserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +39,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('contacts', ContactController::class);
     Route::resource('contracts', ContractController::class);
     Route::resource('payments', PaymentsController::class);
+// register new users can realize only registered user 
+    Route::get('register', [RegisteredUserController::class, 'create'])
+        ->name('register');
+    Route::post('register', [RegisteredUserController::class, 'store']);
 
 });
 
