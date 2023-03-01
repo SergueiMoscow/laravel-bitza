@@ -2,22 +2,32 @@ body {
     color: #333;
 }
 .col-6 {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin: 5px;
     padding: 5px;
 }
 
+.col-1 {
+    padding: 2em;
+}
+
 .col-7 {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin: 5px;
     padding: 5px;
 }
 
 .col-5 {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin: 5px;
     padding: 5px;
 }
@@ -40,6 +50,10 @@ body {
 
 .cell1 {
     grid-column: span 1;
+}
+
+.cell-1 {
+    max-width: 15em;
 }
 
 .surname {
