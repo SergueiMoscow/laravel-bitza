@@ -87,6 +87,12 @@
             <x-responsive-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')">
                 {{ __('Clients') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('contracts.index')" :active="request()->routeIs('contracts.index')">
+                {{ __('Contracts') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('payments.index')" :active="request()->routeIs('payments.index')">
+                {{ __('Payments') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

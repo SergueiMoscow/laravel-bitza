@@ -54,6 +54,7 @@ body {
 
 .cell-1 {
     max-width: 15em;
+    padding: 0 5px;
 }
 
 .surname {
