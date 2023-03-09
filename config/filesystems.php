@@ -40,6 +40,14 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
+            'visibility' => 'private',
+            'throw' => false,
+        ],
+
+        'documents' => [
+            'driver' => 'local',
+            'root' => storage_path('documents'),
+            'url' => env('APP_URL').'/storage/documents',
             'visibility' => 'public',
             'throw' => false,
         ],

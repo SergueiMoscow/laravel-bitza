@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ExpectedPaymentsController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Document;
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 
@@ -34,7 +36,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/contacts/search', [ContactController::class, 'search']);
     Route::get('/contracts/search', [ContractController::class, 'search']);
     Route::get('/contacts/list', [ContactController::class, 'getList']);
+    Route::post('/contacts/adddoc', [ContactController::class, 'addDoc'])->name('contact_add_doc');
     Route::post('/payments/r2', [PaymentsController::class, 'getRoom2']);
+    Route::get('/getdoc', [DocumentController::class, 'getImage']);
 
     Route::resource('contacts', ContactController::class);
     Route::resource('contracts', ContractController::class);

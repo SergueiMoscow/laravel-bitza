@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContactRequest;
 use App\Models\Contact;
+use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -152,5 +155,23 @@ class ContactController extends Controller
         echo json_encode($result);
         return ;
 
+    }
+
+    public function addDoc(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|file|max:1024|mimes:jpg,png',
+            'contact_id' => 'required|numeric'
+        ]);
+        if (!$validator->fails()) {
+            $fileName = $request->file('image')->getClientOriginalName();
+            $path = Storage::disk('documents')->putFileAs('images', $request->file('image'), $fileName);
+            $doc = new Document;
+            $doc->imagefile = $path;
+            $doc->contact_id = $request->contact_id;
+            $doc->save();
+
+        }
+        return redirect()->route('contacts.show', [$request->contact_id]);
     }
 }

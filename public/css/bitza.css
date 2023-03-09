@@ -131,3 +131,18 @@ div[data-contact-id] {
 .bg-greenyellow {
     background-color: greenyellow;
 }
+
+.thumbnails {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    margin: 5px;
+    padding: 5px;
+}
+
+.thumbnail > img {
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+}
