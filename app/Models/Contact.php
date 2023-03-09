@@ -13,4 +13,9 @@ class Contact extends Model
     {
         return $this->hasMany(Contract::class);
     }
+
+    function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }
