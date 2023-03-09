@@ -15,6 +15,8 @@
             <div>{{ $contract->contact->surname }} {{ $contract->contact->name }}</div>
             <x-input-label class="text-align-right">{{ __('status') }}</x-input-label>
             <div>{{ $contract->status }}</div>
+            <x-input-label class="text-align-right">{{ __('close_date') }}</x-input-label>
+            <div>{{ $contract->close_date }}</div>
         </div>
         <a href='/contracts'>
             <x-primary-button>

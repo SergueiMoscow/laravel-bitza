@@ -28,7 +28,8 @@ class StoreContractRequest extends FormRequest
             'date_end' => 'required|date',
             'room' => 'required',
             'price' => 'required',
-            'paydate' => 'required'
+            'paydate' => 'required',
+            'contact_id' => 'required'
 
         ];
     }

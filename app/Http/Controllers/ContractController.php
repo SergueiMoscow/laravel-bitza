@@ -25,7 +25,8 @@ class ContractController extends Controller
         'contacts.surname',
         'contacts.name',
         'contracts.id',
-        'contracts.number'
+        'contracts.number',
+        'contracts.close_date',
     ];
 
     public function index()
@@ -64,8 +65,9 @@ class ContractController extends Controller
         $contract->room = $validated->room;
         $contract->price = $validated->price;
         $contract->paydate = $validated->paydate;
-        //$contract->contact_id = $validated->contact_id;
+        $contract->contact_id = $validated->contact_id;
         $contract->status = 'A';
+        $contract->number = date("Y-m-d", strtotime($contract->date_begin)) . '-' . $contract->room;
         $contract->save();
         return redirect()->route('contracts.index');
     }
@@ -89,7 +91,7 @@ class ContractController extends Controller
      */
     public function edit(Contract $contract)
     {
-        //
+        return view('bitza.contracts.edit', ['contract' => $contract]);
     }
 
     /**
@@ -101,7 +103,16 @@ class ContractController extends Controller
      */
     public function update(Request $request, Contract $contract)
     {
-        //
+        $close_date = date('Y-m-d', strtotime($request->close_date));
+        $id = $request->id;
+        if ($close_date) {
+            $contract = Contract::where('id', $id)->first();
+            $contract->close_date = $close_date;
+            $contract->status = 'B';
+            $contract->save();
+            return redirect()->route('contacts.index');
+
+        }
     }
 
     /**
