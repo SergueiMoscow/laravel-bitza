@@ -36,7 +36,8 @@ return new class extends Migration {
             DATE_FORMAT(contracts.date_begin, '%d.%m.%Y') as date_begin,
             contracts.room, 
             contracts.price, 
-            sum(payments.total) as payed, 
+            sum(payments.total) as payed,
+            payments2.time as lastpayment,
             DATEDIFF(now(),contracts.date_begin) as diff, 
             ROUND(DATEDIFF(now(),contracts.date_begin)/(365/12), 1) as monthdiff, 
             ROUND(COALESCE(sum(payments.total)/contracts.price,0), 1) as paidmonths, 
@@ -44,6 +45,7 @@ return new class extends Migration {
             ROUND(((DATEDIFF(now(),contracts.date_begin)/(365/12))-COALESCE(sum(payments.total)/contracts.price,0))*contracts.price, 0) as debtrur 
         from contracts as contracts
         left join payments as payments on contracts.number=payments.contract
+        left join payments as payments2 on contracts.number=payments2.contract
         where contracts.status='A'
         group by contracts.number, contracts.date_begin, contracts.room, contracts.price
         order by debtrur desc;
