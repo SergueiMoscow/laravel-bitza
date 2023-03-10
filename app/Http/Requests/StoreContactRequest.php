@@ -25,7 +25,7 @@ class StoreContactRequest extends FormRequest
     {
         return [
             'surname' => 'required|min:2|max:30',
-            'name' => 'required|min:5|max:40',
+            'name' => 'required|min:3|max:40',
             'birth_date' => 'nullable|date',
             'birth_place' => 'nullable',
             'document' => 'nullable',

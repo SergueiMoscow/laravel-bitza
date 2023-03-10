@@ -39,6 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/contacts/adddoc', [ContactController::class, 'addDoc'])->name('contact_add_doc');
     Route::post('/payments/r2', [PaymentsController::class, 'getRoom2']);
     Route::get('/getdoc', [DocumentController::class, 'getImage']);
+    Route::post('/deletedoc', [DocumentController::class, 'deleteImage']);
 
     Route::resource('contacts', ContactController::class);
     Route::resource('contracts', ContractController::class);

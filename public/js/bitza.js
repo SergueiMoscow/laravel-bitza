@@ -18,7 +18,10 @@ const post = (url, data = {}) => {
 }
 
 const ajax = (args = {}) => {
-    const method = args.method || "GET";
+    let method = "POST";
+    if (args.method) {
+      method = args.method;
+    }
     const responseType = args.responseType || "text";
     const defaultError = (event) => {
       alert(`Error: ${event}`);
@@ -26,16 +29,18 @@ const ajax = (args = {}) => {
     const xhr = new XMLHttpRequest();
     let params = "";
     if (args.data) {
-      for (param in args.data) {
-        params += `${param}=${encodeURIComponent(args.data[param])}&`;
-      }
-    } else {
-      data = "";
+      params = new URLSearchParams(args.data).toString();
     }
     xhr.open(method, args.url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    if (args.headers) {
+      Object.entries(args.headers).forEach(entry => {
+        [key, value] = entry;
+        xhr.setRequestHeader(key, value);
+      });
+    }
     xhr.responseType = responseType;
-    console.log(`params_enc2: ${params}`);
+    console.log(`Ajax (${method}) ${args.url} p: ${params}`);
     xhr.send(params);
     xhr.onload = function () {
       args.success(xhr.response);
@@ -48,7 +53,21 @@ const ajax = (args = {}) => {
       xhr.onerror = defaultError;
     }
   };
-  
+    
+const deletedoc = (id, contact_id) => {
+    if (confirm('Удалить документ?')) {
+        ajax({
+            method: "POST",
+            url: '/deletedoc',
+            data: { id: id,
+                contact_id: contact_id },
+            responseType: 'text',
+            success: () => {
+                alert('doc');
+            }
+        });
+    }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     let input = document.getElementById("search_contact")
@@ -102,7 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // назначаем обработчик события для клика по кнопке открытия окна
-    document.querySelector('#editBtn').addEventListener('click', openModal);
+    if (document.querySelector("#editBtn")) {
+        document.querySelector('#editBtn').addEventListener('click', openModal);
+    }
 
 
     /*

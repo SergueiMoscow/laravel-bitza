@@ -43,6 +43,9 @@
             @foreach ($contact->documents as $doc)
                 <div class="thumbnail">
                     <img src="/getdoc?id={{ $doc->id }}">
+                    <div class="deleteimage">
+                       <a href="#" onclick="deletedoc({{ $doc->id }}, {{ $contact->id }})"><img src="/img/delete.svg"></a>
+                    </div>
                 </div>
             @endforeach
         </div>
@@ -66,3 +69,4 @@
             </form>
     </div>
 </x-app-layout>
+<script src="/js/bitza.js"></script>

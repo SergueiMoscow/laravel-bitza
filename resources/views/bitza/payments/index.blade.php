@@ -25,4 +25,4 @@
         </div>
     </div>
 </x-app-layout>
-<script src="js/bitza.js"></script>
+<script src="/js/bitza.js"></script>

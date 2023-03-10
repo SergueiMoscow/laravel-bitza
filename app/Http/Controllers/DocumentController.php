@@ -20,4 +20,16 @@ class DocumentController extends Controller
         echo( imagejpeg($srcimg) );
     }
 
+    public function deleteImage(Request $request)
+    {
+        $id = $request->id;
+        $document = Document::findOrFail($id);
+        $fileName = $document->imagefile;
+        $fullPath = storage_path('documents'). DIRECTORY_SEPARATOR . $fileName;
+        if (file_exists($fullPath)) {
+            unlink($fullPath);
+        }
+        $document->delete();
+        return redirect()->route('contacts.show', [$request->contact_id]);
+    }
 }
