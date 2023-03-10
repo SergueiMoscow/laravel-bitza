@@ -18,6 +18,9 @@ class Payment extends Model
 	{
 		$query = "SELECT * FROM expectedPayments";
 		$result = DB::select($query);
+		foreach ($result as $row) {
+			$row->lastpayment = self::getLastPayment($row->number);
+		}
 		return $result;
 		// echo "<table><tr>
 		// <td>Ком.</td>
@@ -30,5 +33,18 @@ class Payment extends Model
 		// <td>Долг руб.</td>
 		// </tr>";
 		// $result = getResult($query) or die(db_error());
+	}
+
+	private static function getLastPayment($contractNumber)
+	{
+		$query = "SELECT `time` from payments where contract = '$contractNumber' ORDER BY `time` LIMIT 0, 1";
+		$result = DB::selectOne($query);
+		if ($result) {
+			return $result->time;
+		} else {
+			return null;
+		}
+
+		//return is_null($row->time) ? date('Y-m-d H:i:s', strtotime('-1 month')) : $row->time;
 	}
 }

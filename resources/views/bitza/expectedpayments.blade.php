@@ -11,8 +11,9 @@
                     @else
                         <?php $bg_class = 'bg-greenyellow' ?>
                     @endif
+                    <?php $payedThisMonth = (date('m', strtotime($row->lastpayment)) === date('m')) ?>
                     <div class="{{ $bg_class }} col-6 shadow-sm sm:rounded-lg">
-                      <a href="/payments?contract={{ $row->number }}"><div class="cell-1">{{ $row->room }}</div></a>
+                      <a href="/payments?contract={{ $row->number }}"><div class="cell-1">{{ $row->room }} {{ $payedThisMonth ? '+' : ''}}</div></a>
                       <div class="cell-1">{{ substr($row->date_begin, 0, 10) }}</div>
                       <div class="cell-1">{{ $row->price }}</div>
                       <div class="cell-1">{{ $row->paidmonths }}</div>
