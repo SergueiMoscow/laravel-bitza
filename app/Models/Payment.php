@@ -37,7 +37,7 @@ class Payment extends Model
 
 	private static function getLastPayment($contractNumber)
 	{
-		$query = "SELECT `time` from payments where contract = '$contractNumber' ORDER BY `time` LIMIT 0, 1";
+		$query = "SELECT `time` from payments where contract = '$contractNumber' ORDER BY `time` DESC LIMIT 0, 1";
 		$result = DB::selectOne($query);
 		if ($result) {
 			return $result->time;
