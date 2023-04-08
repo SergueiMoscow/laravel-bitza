@@ -80,6 +80,7 @@ const countTotal = () => {
     dicsount = document.getElementById('dicsount');
     total = amount.value - discount.value;
     document.getElementById('total').value = total;
+    amount.value = Number(amount.value);
 };
 document.getElementById('amount').addEventListener('input', () => {
     countTotal();
