@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\TaxController;
 use App\Http\Controllers\ExpectedPaymentsController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
@@ -40,6 +41,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/payments/r2', [PaymentsController::class, 'getRoom2']);
     Route::get('/getdoc', [DocumentController::class, 'getImage']);
     Route::post('/deletedoc', [DocumentController::class, 'deleteImage']);
+
+    Route::get('/tax', [TaxController::class, 'index']);
+    Route::post('/tax', [TaxController::class, 'index'])->name('tax.index');
 
     Route::resource('contacts', ContactController::class);
     Route::resource('contracts', ContractController::class);

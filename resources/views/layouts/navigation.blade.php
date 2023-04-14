@@ -25,8 +25,8 @@
                         {{ __('Payments') }}
                     </x-nav-link>
                     @if(Auth::user()->role == 'Admin')
-                        <x-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')">
-                            {{ __('Rooms') }}
+                        <x-nav-link :href="route('tax.index')" :active="request()->routeIs('tax.index')">
+                            {{ __('Tax') }}
                         </x-nav-link>
                     @endif
                 </div>
